@@ -13,9 +13,13 @@ end
 
 
 Rails.application.routes.draw do
+  get 'users/index'
+
   constraints(SubdomainPresent) do
     root 'projects#index', as: :subdomain_root
+    # devise_for :users, only: :index
     devise_for :users
+    
   end
   
   constraints(SubdomainBlank) do
