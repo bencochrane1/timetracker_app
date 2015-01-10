@@ -16,3 +16,8 @@ body {
     @extend .alert;
     @extend .alert-warning;
 }
+
+
+.navbar .right-button {
+    margin-right: 15px;
+}
