@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 gem 'pg'
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
 gem 'apartment'
+gem 'simple_form'
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
@@ -24,4 +26,6 @@ group :development, :test do
     gem 'factory_girl_rails'
     gem 'shoulda-matchers'
     gem 'database_cleaner'
+    gem 'letter_opener'
+    gem 'email_spec'
 end

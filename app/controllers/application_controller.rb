@@ -11,19 +11,23 @@ class ApplicationController < ActionController::Base
         Apartment::Database.switch('public')
         return unless request.subdomain.present?
 
-        account = Account.find_by(subdomain: request.subdomain)
-        if account
-            Apartment::Database.switch(request.subdomain)
+        if current_account
+            Apartment::Database.switch(current_account.subdomain)
         else
             redirect_to root_url(subdomain: false)
-
-        Apartment::Database.switch(request.subdomain)
-
         end
-
-        def after_sign_out_path(resource_or_scope)
-        new_user_session_path
-        end
-
     end
+
+    def current_account
+      @current_account ||= Account.find_by(subdomain: request.subdomain)          
+    end
+
+    helper_method :current_account
+
+    def after_sign_out_path(resource_or_scope)
+      new_user_session_path
+    end
+
+
+
 end
