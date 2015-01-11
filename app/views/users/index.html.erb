@@ -17,12 +17,20 @@
             <tr>
               <td><%= user.name %></td>
               <td><%= user.email %></td>
-              <td></td>
-             
+              <td><%= user_status(user) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+
+      <h3 class="extra-margin-top">Invite Users</h3>
+
+      <%= simple_form_for(User.new, url: subdomain_root_path,
+                                    html: { class: 'form-inline' }) do |f| %>
+        <%= f.input :email, placeholder: 'Email', label: false %>
+        <%= f.button :submit, 'Invite User', class: 'btn-primary' %>
+      <% end %>
+
     </div>
   </div>
 </div>

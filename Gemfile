@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 gem 'pg'
 gem 'devise'
-gem 'devise_invitable', '~> 1.3.4'
+gem 'devise_invitable'
 gem 'apartment'
 gem 'simple_form'
 

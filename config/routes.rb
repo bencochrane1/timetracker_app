@@ -1,4 +1,5 @@
 
+
 class SubdomainPresent
   def self.matches?(request)
     request.subdomain.present?
@@ -11,20 +12,18 @@ class SubdomainBlank
   end
 end
 
-
 Rails.application.routes.draw do
-  get 'users/index'
-
   constraints(SubdomainPresent) do
     root 'projects#index', as: :subdomain_root
-    resources :users, only: :index
     devise_for :users
-    
+    resources :users, only: :index
+    resources :projects, except: [:index, :show, :destroy]
   end
   
   constraints(SubdomainBlank) do
     root 'welcome#index'
     resources :accounts, only: [:new, :create]
   end
-
 end
+
+
